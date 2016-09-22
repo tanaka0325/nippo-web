@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "pack": "webpack",
+    "build": "npm run pack && cp -f src/index.html build/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "license": "MIT",
