@@ -4,8 +4,9 @@
   "main": "index.js",
   "scripts": {
     "pack": "webpack",
-    "build": "npm run pack && cp -f src/index.html build/",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "webpack -w -d",
+    "start": "npm run watch & browser-sync start --config bs-config.js",
+    "build": "npm run pack && cp -f src/index.html build/"
   },
   "license": "MIT",
   "dependencies": {
@@ -16,6 +17,8 @@
     "babel-loader": "^6.2.5",
     "babel-preset-es2015": "^6.14.0",
     "babel-preset-react": "^6.11.1",
+    "babel-preset-react-hmre": "^1.1.1",
+    "browser-sync": "^2.16.0",
     "eslint": "^3.5.0",
     "eslint-config-airbnb": "^11.1.0",
     "eslint-plugin-import": "^1.15.0",
