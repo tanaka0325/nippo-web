@@ -34,7 +34,7 @@ export default class TasksContainer extends React.Component {
     const tasksTodo = [];
     const tasksDoing = [];
     const tasksDone = [];
-    this.state.tasks.map((task) => {
+    this.state.tasks.forEach((task) => {
       switch (task.status) {
         case 1:
           tasksTodo.push(task);
