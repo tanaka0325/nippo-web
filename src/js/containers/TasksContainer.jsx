@@ -21,7 +21,7 @@ export default class TasksContainer extends React.Component {
 
   getTasksFromServer() {
     request
-      .get('http://localhost:3000/tasks')
+      .get(`http://localhost:3000/tasks/date/${this.props.date}`)
       .end((err, res) => {
         if (err) {
           throw err;
