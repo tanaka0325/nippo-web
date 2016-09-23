@@ -25,7 +25,7 @@ module.exports = {
       baseDir: "./build/",
     },
     "proxy": false,
-    "port": 3000,
+    "port": 3002,
     "middleware": false,
     "serveStatic": [],
     "ghostMode": {
