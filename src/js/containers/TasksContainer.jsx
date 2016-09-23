@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import request from 'superagent';
 
 import Tasks from '../components/Tasks.jsx';
+
+const propTypes = {
+  date: PropTypes.string.isRequired,
+};
 
 export default class TasksContainer extends React.Component {
   constructor(props) {
@@ -60,3 +64,5 @@ export default class TasksContainer extends React.Component {
     );
   }
 }
+
+TasksContainer.propTypes = propTypes;
