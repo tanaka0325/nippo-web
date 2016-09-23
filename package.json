@@ -1,7 +1,6 @@
 {
   "name": "my-day-web",
   "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
     "pack": "webpack",
     "watch": "webpack -w -d",
