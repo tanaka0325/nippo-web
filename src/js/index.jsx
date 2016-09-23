@@ -8,11 +8,14 @@ import TasksContainer from './containers/TasksContainer.jsx';
 
 render(
   <div>
-    Hello react<br />
     <Header />
     <DateHeader />
-    <Diary />
-    <TasksContainer />
+    <div className="section">
+      <div className="columns">
+        <TasksContainer />
+        <Diary />
+      </div>
+    </div>
   </div>,
   document.getElementById('content')
 );

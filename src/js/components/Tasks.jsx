@@ -7,7 +7,10 @@ export default class Tasks extends React.Component {
 
   render() {
     return (
-      <p>{JSON.stringify(this.props.tasks)}</p>
+      <div className="content">
+        <h3>{this.props.label}</h3>
+        <span>{JSON.stringify(this.props.tasks)}</span>
+      </div>
     );
   }
 }

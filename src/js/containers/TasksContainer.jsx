@@ -51,10 +51,10 @@ export default class TasksContainer extends React.Component {
     });
 
     return (
-      <div>
-        <Tasks tasks={tasksTodo} />
-        <Tasks tasks={tasksDoing} />
-        <Tasks tasks={tasksDone} />
+      <div className="column">
+        <Tasks tasks={tasksTodo} label="TODO" />
+        <Tasks tasks={tasksDoing} label="DOING" />
+        <Tasks tasks={tasksDone} label="DONE" />
         <br />
       </div>
     );
