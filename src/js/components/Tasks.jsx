@@ -1,6 +1,13 @@
 import React from 'react';
 
-const Tasks = () =>
-  <div>Hello Tasks Component.</div>;
+export default class Tasks extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-export default Tasks;
+  render() {
+    return (
+      <p>{JSON.stringify(this.props.tasks)}</p>
+    );
+  }
+}

@@ -31,16 +31,31 @@ export default class TasksContainer extends React.Component {
   }
 
   render() {
-    const tasks = this.state.tasks.map((task) => {
-      return <p>{JSON.stringify(task)}</p>;
+    const tasksTodo = [];
+    const tasksDoing = [];
+    const tasksDone = [];
+    this.state.tasks.map((task) => {
+      switch (task.status) {
+        case 1:
+          tasksTodo.push(task);
+          break;
+        case 2:
+          tasksDoing.push(task);
+          break;
+        case 3:
+          tasksDone.push(task);
+          break;
+        default:
+          console.log('needs error handling.');
+      }
     });
 
     return (
       <div>
+        <Tasks tasks={tasksTodo} />
+        <Tasks tasks={tasksDoing} />
+        <Tasks tasks={tasksDone} />
         <br />
-        {tasks}
-        <br /><br />
-        <Tasks />
       </div>
     );
   }
