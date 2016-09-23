@@ -26,15 +26,19 @@ export default class TasksContainer extends React.Component {
         if (err) {
           throw err;
         }
-        this.setState({ tasks: res.text });
+        this.setState({ tasks: res.body });
       });
   }
 
   render() {
+    const tasks = this.state.tasks.map((task) => {
+      return <p>{JSON.stringify(task)}</p>;
+    });
+
     return (
       <div>
         <br />
-        {this.state.tasks}
+        {tasks}
         <br /><br />
         <Tasks />
       </div>
