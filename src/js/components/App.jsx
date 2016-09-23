@@ -5,12 +5,17 @@ import DateHeader from './DateHeader.jsx';
 import Diary from './Diary.jsx';
 import TasksContainer from '../containers/TasksContainer.jsx';
 
+import Utils from '../utils.js';
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
 
+    const today = new Date();
     this.state = {
-      date: '',
+      date: `${today.getFullYear()}-\
+             ${Utils.paddingZero(today.getMonth() + 1)}-\
+             ${Utils.paddingZero(today.getDate())}`.replace(/\s/g, ''),
     };
   }
 
@@ -21,8 +26,8 @@ export default class App extends React.Component {
         <DateHeader />
         <div className="section">
           <div className="columns">
-            <TasksContainer />
-            <Diary />
+            <TasksContainer date={this.state.date} />
+            <Diary date={this.state.date} />
           </div>
         </div>
       </div>
