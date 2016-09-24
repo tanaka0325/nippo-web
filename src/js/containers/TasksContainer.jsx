@@ -18,10 +18,12 @@ export default class TasksContainer extends React.Component {
     this.getTasksFromServer = this.getTasksFromServer.bind(this);
   }
 
-  // componentDidMount() {
+  componentDidMount() {
+    this.getTasksFromServer(this.props.date);
+  }
+
   componentWillReceiveProps(nextProps) {
     this.getTasksFromServer(nextProps.date);
-    // setInterval(this.getTasksFromServer, this.props.pollInterval);
   }
 
   getTasksFromServer(date) {
