@@ -13,9 +13,7 @@ export default class App extends React.Component {
 
     const today = new Date();
     this.state = {
-      date: `${today.getFullYear()}-\
-             ${Utils.paddingZero(today.getMonth() + 1)}-\
-             ${Utils.paddingZero(today.getDate())}`.replace(/\s/g, ''),
+      date: today,
     };
   }
 
@@ -26,8 +24,8 @@ export default class App extends React.Component {
         <DateHeader />
         <div className="section">
           <div className="columns">
-            <TasksContainer date={this.state.date} />
-            <Diary date={this.state.date} />
+            <TasksContainer date={Utils.formatDate(this.state.date)} />
+            <Diary date={Utils.formatDate(this.state.date)} />
           </div>
         </div>
       </div>
