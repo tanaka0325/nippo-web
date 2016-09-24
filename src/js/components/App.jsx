@@ -15,13 +15,34 @@ export default class App extends React.Component {
     this.state = {
       date: today,
     };
+
+    this.prevDate = this.prevDate.bind(this);
+    this.nextDate = this.nextDate.bind(this);
+  }
+
+  prevDate() {
+    const date = new Date(this.state.date.setDate(this.state.date.getDate() - 1));
+    this.setState({
+      date,
+    });
+  }
+
+  nextDate() {
+    const date = new Date(this.state.date.setDate(this.state.date.getDate() + 1));
+    this.setState({
+      date,
+    });
   }
 
   render() {
     return (
       <div>
         <Header />
-        <DateHeader />
+        <DateHeader
+          date={Utils.formatDate(this.state.date)}
+          prevDate={this.prevDate}
+          nextDate={this.nextDate}
+        />
         <div className="section">
           <div className="columns">
             <TasksContainer date={Utils.formatDate(this.state.date)} />
