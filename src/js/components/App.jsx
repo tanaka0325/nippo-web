@@ -4,6 +4,7 @@ import Header from './Header.jsx';
 import DateHeader from './DateHeader.jsx';
 import Diary from './Diary.jsx';
 import TasksContainer from '../containers/TasksContainer.jsx';
+import TimelineContainer from '../containers/TimelineContainer.jsx';
 
 import Utils from '../utils.js';
 
@@ -47,6 +48,7 @@ export default class App extends React.Component {
           <div className="columns">
             <TasksContainer date={Utils.formatDate(this.state.date)} />
             <Diary date={Utils.formatDate(this.state.date)} />
+            <TimelineContainer date={Utils.formatDate(this.state.date)} />
           </div>
         </div>
       </div>
