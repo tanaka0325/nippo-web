@@ -2,7 +2,8 @@ import React from 'react';
 
 import Header from './Header.jsx';
 import DateHeader from './DateHeader.jsx';
-import Diary from './Diary.jsx';
+// import Diary from './Diary.jsx';
+import TweetContainer from '../containers/TweetContainer.jsx';
 import TasksContainer from '../containers/TasksContainer.jsx';
 import TimelineContainer from '../containers/TimelineContainer.jsx';
 
@@ -44,6 +45,7 @@ export default class App extends React.Component {
           prevDate={this.prevDate}
           nextDate={this.nextDate}
         />
+        <TweetContainer />
         <div className="section">
           <div className="columns">
             <TasksContainer date={Utils.formatDate(this.state.date)} />
