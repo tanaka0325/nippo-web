@@ -47,7 +47,7 @@ export default class App extends React.Component {
         <div className="section">
           <div className="columns">
             <TasksContainer date={Utils.formatDate(this.state.date)} />
-            <Diary date={Utils.formatDate(this.state.date)} />
+            {/* <Diary date={Utils.formatDate(this.state.date)} /> */}
             <TimelineContainer date={Utils.formatDate(this.state.date)} />
           </div>
         </div>
