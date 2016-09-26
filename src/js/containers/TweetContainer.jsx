@@ -1,21 +1,46 @@
 import React, { PropTypes } from 'react';
 import request from 'superagent';
 
+const propTypes = {
+  date: PropTypes.string.isRequired,
+};
+
 export default class TweetContainer extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      tweet: '',
+    };
+
+    this._onChange = this._onChange.bind(this);
+    this.postTweet = this.postTweet.bind(this);
   }
 
-  // getTimelineFromServer(date) {
-  //   request
-  //     .get(`http://localhost:3000/timeline/date/${date}`)
-  //     .end((err, res) => {
-  //       if (err) {
-  //         throw err;
-  //       }
-  //       this.setState({ timelines: res.body });
-  //     });
-  // }
+  _onChange(e) {
+    this.setState({ tweet: e.target.value });
+  }
+
+  postTweet(e) {
+    e.preventDefault();
+    if (this.state.tweet !== '') {
+      this.setState({ tweet: '' });
+      request
+        .post('http://localhost:3000/tweets')
+        .set('Accept', 'application/json')
+        .send({
+          user_id: 1,
+          message: this.state.tweet,
+          date: this.props.date,
+          status: 1,
+        })
+        .end((err) => {
+          if (err) {
+            throw err;
+          }
+        });
+    }
+  }
 
   render() {
     const divStyle = {
@@ -25,18 +50,30 @@ export default class TweetContainer extends React.Component {
     return (
       <div className="section">
         <div className="container" style={divStyle}>
-          <div className="control is-grouped">
-            <p className="control is-expanded">
-              <input className="input" type="text" placeholder="いま何してる？" />
-            </p>
-            <p className="control">
-              <a className="button is-info">
-                Tweet
-              </a>
-            </p>
-          </div>
+          <form onSubmit={this.postTweet}>
+            <div className="control is-grouped">
+              <p className="control is-expanded">
+                <input
+                  className="input"
+                  value={this.state.tweet}
+                  type="text"
+                  placeholder="いま何してる？"
+                  onChange={this._onChange}
+                />
+              </p>
+              <p className="control">
+                <input
+                  className="button is-info"
+                  type="button"
+                  value="Tweet"
+                />
+              </p>
+            </div>
+          </form>
         </div>
       </div>
     );
   }
 }
+
+TweetContainer.propTypes = propTypes;

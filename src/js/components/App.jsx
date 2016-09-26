@@ -45,7 +45,7 @@ export default class App extends React.Component {
           prevDate={this.prevDate}
           nextDate={this.nextDate}
         />
-        <TweetContainer />
+        <TweetContainer date={Utils.formatDate(this.state.date)} />
         <div className="section">
           <div className="columns">
             <TasksContainer date={Utils.formatDate(this.state.date)} />
