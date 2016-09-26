@@ -35,14 +35,6 @@ export default class Tasks extends React.Component {
           </table>
         </div>
       </article>
-      // <div className="content">
-      //   <h3>{this.props.label}</h3>
-      //   <table className="table">
-      //     <tbody>
-      //       {tasks}
-      //     </tbody>
-      //   </table>
-      // </div>
     );
   }
 }
