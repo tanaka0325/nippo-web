@@ -47,8 +47,13 @@ export default class TimelineContainer extends React.Component {
       }
     });
 
+    const divStyle = {
+      maxHeight: '450px',
+      overflowY: 'scroll',
+    };
+
     return (
-      <div className="column">
+      <div className="column" style={divStyle}>
         {actions}
       </div>
     );
