@@ -41,9 +41,9 @@ export default class TimelineContainer extends React.Component {
   render() {
     const actions = this.state.timelines.map((log, i) => {
       if (log.type === 'tweet') {
-        return <TimelineTweet key={i} message={log.target.message} />;
+        return <TimelineTweet key={i} message={log.target.message} action_name={log.action_name} />;
       } else if (log.type === 'task') {
-        return <TimelineTask key={i} text={log.target.text} />;
+        return <TimelineTask key={i} text={log.target.text} action_name={log.action_name} />;
       }
     });
 

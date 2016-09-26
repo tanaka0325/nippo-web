@@ -2,9 +2,14 @@ import React from 'react';
 
 const TimelineTweet = (props) => {
   return (
-    <div>
-      tweet: {props.message}
-    </div>
+    <article className="message is-info">
+      <div className="message-header">
+        {props.action_name}: Tweet
+      </div>
+      <div className="message-body">
+        {props.message}
+      </div>
+    </article>
   );
 };
 
