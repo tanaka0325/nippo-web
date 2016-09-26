@@ -21,10 +21,15 @@ export default class TasksContainer extends React.Component {
 
   componentDidMount() {
     this.getTasksFromServer(this.props.date);
+    this.interval = setInterval(() => this.getTasksFromServer(this.props.date), 2000);
   }
 
   componentWillReceiveProps(nextProps) {
     this.getTasksFromServer(nextProps.date);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   getTasksFromServer(date) {
