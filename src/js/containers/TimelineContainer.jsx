@@ -1,6 +1,9 @@
 import React, { PropTypes } from 'react';
 import request from 'superagent';
 
+import TimelineTask from '../components/TimelineTask.jsx';
+import TimelineTweet from '../components/TimelineTweet.jsx';
+
 const propTypes = {
   date: PropTypes.string.isRequired,
 };
@@ -26,7 +29,7 @@ export default class TimelineContainer extends React.Component {
 
   getTimelineFromServer(date) {
     request
-      .get(`http://localhost:3000/timelines/date/${date}`)
+      .get(`http://localhost:3000/timeline/date/${date}`)
       .end((err, res) => {
         if (err) {
           throw err;
@@ -36,8 +39,12 @@ export default class TimelineContainer extends React.Component {
   }
 
   render() {
-    const actions = this.state.timelines.map((action) => {
-      return <div>{action.action_id}</div>;
+    const actions = this.state.timelines.map((log, i) => {
+      if (log.type === 'tweet') {
+        return <TimelineTweet key={i} message={log.target.message} />;
+      } else if (log.type === 'task') {
+        return <TimelineTask key={i} text={log.target.text} />;
+      }
     });
 
     return (
