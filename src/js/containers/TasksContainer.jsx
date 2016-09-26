@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import request from 'superagent';
 
 import Tasks from '../components/Tasks.jsx';
+import TaskForm from '../components/TaskForm.jsx';
 
 const propTypes = {
   date: PropTypes.string.isRequired,
@@ -59,6 +60,7 @@ export default class TasksContainer extends React.Component {
 
     return (
       <div className="column">
+        <TaskForm date={this.props.date}/>
         <Tasks tasks={tasksTodo} label="TODO" />
         <Tasks tasks={tasksDoing} label="DOING" />
         <Tasks tasks={tasksDone} label="DONE" />
