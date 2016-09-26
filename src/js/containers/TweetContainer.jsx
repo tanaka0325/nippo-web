@@ -64,7 +64,7 @@ export default class TweetContainer extends React.Component {
               <p className="control">
                 <input
                   className="button is-info"
-                  type="button"
+                  type="submit"
                   value="Tweet"
                 />
               </p>
