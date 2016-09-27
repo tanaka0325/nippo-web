@@ -37,6 +37,8 @@ export default class App extends React.Component {
   }
 
   render() {
+    const tweetForm = Utils.isToday(Utils.formatDate(this.state.date)) ? <TweetContainer date={Utils.formatDate(this.state.date)} /> : '';
+
     return (
       <div>
         <Header />
@@ -45,7 +47,7 @@ export default class App extends React.Component {
           prevDate={this.prevDate}
           nextDate={this.nextDate}
         />
-        <TweetContainer date={Utils.formatDate(this.state.date)} />
+        {tweetForm}
         <div className="section">
           <div className="columns">
             <TasksContainer date={Utils.formatDate(this.state.date)} />
