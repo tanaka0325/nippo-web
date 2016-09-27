@@ -1,4 +1,9 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+
+const propTypes = {
+  action_name: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+};
 
 const TimelineTask = (props) => {
   return (
@@ -9,7 +14,9 @@ const TimelineTask = (props) => {
       <div className="message-body">
         {props.text}
       </div>
-    </article>  );
+    </article>
+  );
 };
 
+TimelineTask.propTypes = propTypes;
 export default TimelineTask;

@@ -1,52 +1,32 @@
-import React, { PropTypes } from 'react';
-import request from 'superagent';
+import connectToStores from 'alt-utils/lib/connectToStores';
+import React, { PropTypes, Component } from 'react';
 
+import TimelineStore from '../stores/TimelineStore';
+import TimelineActions from '../actions/TimelineActions';
 import Timeline from '../components/Timeline.jsx';
 
 const propTypes = {
   date: PropTypes.string.isRequired,
+  timeline: PropTypes.array.isRequired,
 };
 
-export default class TimelineContainer extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      timeline: [],
-    };
-
-    this.getTimelineFromServer = this.getTimelineFromServer.bind(this);
+class TimelineContainer extends Component {
+  static getStores() {
+    return [TimelineStore];
   }
-
+  static getPropsFromStores() {
+    return TimelineStore.getState();
+  }
   componentDidMount() {
-    this.getTimelineFromServer(this.props.date);
-    // this.interval = setInterval(() => this.getTimelineFromServer(this.props.date), 2000);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.getTimelineFromServer(nextProps.date);
-  }
-
-  // componentWillUnmount() {
-  //   clearInterval(this.interval);
-  // }
-
-  getTimelineFromServer(date) {
-    request
-      .get(`http://localhost:3000/timeline/date/${date}`)
-      .end((err, res) => {
-        if (err) {
-          throw err;
-        }
-        this.setState({ timeline: res.body });
-      });
+    TimelineActions.updateTimeline(this.props.date);
   }
 
   render() {
     return (
-      <Timeline timeline={this.state.timeline} />
+      <Timeline timeline={this.props.timeline} />
     );
   }
 }
 
 TimelineContainer.propTypes = propTypes;
+export default connectToStores(TimelineContainer);

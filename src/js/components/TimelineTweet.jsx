@@ -1,4 +1,9 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+
+const propTypes = {
+  action_name: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
+};
 
 const TimelineTweet = (props) => {
   return (
@@ -13,4 +18,5 @@ const TimelineTweet = (props) => {
   );
 };
 
+TimelineTweet.propTypes = propTypes;
 export default TimelineTweet;

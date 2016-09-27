@@ -7,28 +7,29 @@ const propTypes = {
   timeline: PropTypes.array.isRequired,
 };
 
-export default class Timeline extends React.Component {
-  render() {
-    const actions = this.props.timeline.map((log, i) => {
-      if (log.type === 'tweet') {
+const Timeline = (props) => {
+  const actions = props.timeline.map((log, i) => {
+    switch (log.type) {
+      case 'tweet':
         return <TimelineTweet key={i} message={log.target.message} action_name={log.action_name} />;
-      } else if (log.type === 'task') {
+      case 'task':
         return <TimelineTask key={i} text={log.target.text} action_name={log.action_name} />;
-      }
-    });
+      default:
+        return '';
+    }
+  });
 
-    const divStyle = {
-      maxHeight: '450px',
-      overflowY: 'scroll',
-    };
+  const divStyle = {
+    maxHeight: '450px',
+    overflowY: 'scroll',
+  };
 
-    return (
-      <div className="column" style={divStyle}>
-        {actions}
-      </div>
-    );
-  }
-
-}
+  return (
+    <div className="column" style={divStyle}>
+      {actions}
+    </div>
+  );
+};
 
 Timeline.propTypes = propTypes;
+export default Timeline;
