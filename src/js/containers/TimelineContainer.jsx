@@ -21,16 +21,16 @@ export default class TimelineContainer extends React.Component {
 
   componentDidMount() {
     this.getTimelineFromServer(this.props.date);
-    this.interval = setInterval(() => this.getTimelineFromServer(this.props.date), 2000);
+    // this.interval = setInterval(() => this.getTimelineFromServer(this.props.date), 2000);
   }
 
   componentWillReceiveProps(nextProps) {
     this.getTimelineFromServer(nextProps.date);
   }
 
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
+  // componentWillUnmount() {
+  //   clearInterval(this.interval);
+  // }
 
   getTimelineFromServer(date) {
     request
