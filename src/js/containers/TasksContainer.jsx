@@ -4,6 +4,8 @@ import request from 'superagent';
 import Tasks from '../components/Tasks.jsx';
 import TaskForm from '../components/TaskForm.jsx';
 
+import Utils from '../utils';
+
 const propTypes = {
   date: PropTypes.string.isRequired,
 };
@@ -63,9 +65,11 @@ export default class TasksContainer extends React.Component {
       }
     });
 
+    const taskForm = Utils.isToday(this.props.date) ? <TaskForm date={this.props.date} /> : '';
+
     return (
       <div className="column">
-        <TaskForm date={this.props.date}/>
+        {taskForm}
         <Tasks tasks={tasksTodo} label="TODO" />
         <Tasks tasks={tasksDoing} label="DOING" />
         <Tasks tasks={tasksDone} label="DONE" />
