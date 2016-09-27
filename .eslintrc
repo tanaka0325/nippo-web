@@ -1,10 +1,7 @@
-{
-  "env": {
-    "browser": true,
-    },
-  "extends": "airbnb",
-  "rules": {
-    "arrow-body-style": ["error", "as-needed"],
-    "no-underscore-dangle": ["error", { "allowAfterThis": true }],
-  },
-}
+env:
+  browser: true
+extends: airbnb
+rules:
+  arrow-body-style: 0
+  no-underscore-dangle: [ error, { allowAfterThis: true } ]
+  class-methods-use-this: 0
