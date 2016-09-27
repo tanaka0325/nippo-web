@@ -12,7 +12,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
 
-    const today = new Date();
+    const today = Utils.getToday();
     this.state = {
       date: today,
     };
@@ -22,35 +22,35 @@ export default class App extends React.Component {
   }
 
   prevDate() {
-    const date = new Date(this.state.date.setDate(this.state.date.getDate() - 1));
+    const yesterday = Utils.getYeasterday();
     this.setState({
-      date,
+      date: yesterday,
     });
   }
 
   nextDate() {
-    const date = new Date(this.state.date.setDate(this.state.date.getDate() + 1));
+    const tomorrow = Utils.getTomorrow();
     this.setState({
-      date,
+      date: tomorrow,
     });
   }
 
   render() {
-    const tweetForm = Utils.isToday(Utils.formatDate(this.state.date)) ? <TweetContainer date={Utils.formatDate(this.state.date)} /> : '';
+    const tweetForm = Utils.isToday(this.state.date) ? <TweetContainer date={this.state.date} /> : '';
 
     return (
       <div>
         <Header />
         <DateHeader
-          date={Utils.formatDate(this.state.date)}
+          date={this.state.date}
           prevDate={this.prevDate}
           nextDate={this.nextDate}
         />
         {tweetForm}
         <div className="section">
           <div className="columns">
-            <TasksContainer date={Utils.formatDate(this.state.date)} />
-            <TimelineContainer date={Utils.formatDate(this.state.date)} />
+            <TasksContainer date={this.state.date} />
+            <TimelineContainer date={this.state.date} />
           </div>
         </div>
       </div>
