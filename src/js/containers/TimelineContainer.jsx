@@ -1,8 +1,7 @@
 import React, { PropTypes } from 'react';
 import request from 'superagent';
 
-import TimelineTask from '../components/TimelineTask.jsx';
-import TimelineTweet from '../components/TimelineTweet.jsx';
+import Timeline from '../components/Timeline.jsx';
 
 const propTypes = {
   date: PropTypes.string.isRequired,
@@ -44,23 +43,8 @@ export default class TimelineContainer extends React.Component {
   }
 
   render() {
-    const actions = this.state.timeline.map((log, i) => {
-      if (log.type === 'tweet') {
-        return <TimelineTweet key={i} message={log.target.message} action_name={log.action_name} />;
-      } else if (log.type === 'task') {
-        return <TimelineTask key={i} text={log.target.text} action_name={log.action_name} />;
-      }
-    });
-
-    const divStyle = {
-      maxHeight: '450px',
-      overflowY: 'scroll',
-    };
-
     return (
-      <div className="column" style={divStyle}>
-        {actions}
-      </div>
+      <Timeline timeline={this.state.timeline} />
     );
   }
 }
