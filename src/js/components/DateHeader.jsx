@@ -1,25 +1,25 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
+import DateActions from '../actions/DateActions';
+import Utils from '../utils';
 
 const propTypes = {
   date: PropTypes.string.isRequired,
-  prevDate: PropTypes.func.isRequired,
-  nextDate: PropTypes.func.isRequired,
 };
 
-export default class DateHeader extends React.Component {
+class DateHeader extends Component {
   constructor(props) {
     super(props);
 
-    this._onClickPrevDate = this._onClickPrevDate.bind(this);
-    this._onClickNextDate = this._onClickNextDate.bind(this);
+    this.goPrevDate = this.goPrevDate.bind(this);
+    this.goNextDate = this.goNextDate.bind(this);
   }
 
-  _onClickPrevDate() {
-    this.props.prevDate();
+  goPrevDate() {
+    DateActions.changeToDate(Utils.getRelativeDate(this.props.date, -1));
   }
 
-  _onClickNextDate() {
-    this.props.nextDate();
+  goNextDate() {
+    DateActions.changeToDate(Utils.getRelativeDate(this.props.date, 1));
   }
 
   render() {
@@ -28,13 +28,13 @@ export default class DateHeader extends React.Component {
         <nav className="nav has-shadow">
           <div className="container">
             <div className="nav-left">
-              <a onClick={this._onClickPrevDate}>◀</a>
+              <a onClick={this.goPrevDate}>◀</a>
             </div>
             <div className="nav-center">
               {this.props.date}
             </div>
             <div className="nav-right">
-              <a onClick={this._onClickNextDate}>▶</a>
+              <a onClick={this.goNextDate}>▶</a>
             </div>
           </div>
         </nav>
@@ -44,3 +44,4 @@ export default class DateHeader extends React.Component {
 }
 
 DateHeader.propTypes = propTypes;
+export default DateHeader;

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Header from './Header.jsx';
-import DateHeader from './DateHeader.jsx';
+import DateHeaderContainer from '../containers/DateHeaderContainer.jsx';
 import TweetContainer from '../containers/TweetContainer.jsx';
 import TasksContainer from '../containers/TasksContainer.jsx';
 import TimelineContainer from '../containers/TimelineContainer.jsx';
@@ -41,10 +41,8 @@ export default class App extends React.Component {
     return (
       <div>
         <Header />
-        <DateHeader
+        <DateHeaderContainer
           date={this.state.date}
-          prevDate={this.prevDate}
-          nextDate={this.nextDate}
         />
         {tweetForm}
         <div className="section">
