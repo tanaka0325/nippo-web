@@ -5,3 +5,6 @@ rules:
   arrow-body-style: 0
   no-underscore-dangle: [ error, { allowAfterThis: true } ]
   class-methods-use-this: 0
+parserOptions:
+  ecmaFeatures:
+    experimentalObjectRestSpread: true
