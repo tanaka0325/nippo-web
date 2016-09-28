@@ -1,6 +1,7 @@
 import connectToStores from 'alt-utils/lib/connectToStores';
 import React, { PropTypes, Component } from 'react';
 
+import DateStore from '../stores/DateStore';
 import TimelineStore from '../stores/TimelineStore';
 import TimelineActions from '../actions/TimelineActions';
 import Timeline from '../components/Timeline.jsx';
@@ -12,10 +13,13 @@ const propTypes = {
 
 class TimelineContainer extends Component {
   static getStores() {
-    return [TimelineStore];
+    return [DateStore, TimelineStore];
   }
   static getPropsFromStores() {
-    return TimelineStore.getState();
+    return {
+      ...DateStore.getState(),
+      ...TimelineStore.getState(),
+    };
   }
   componentDidMount() {
     TimelineActions.updateTimeline(this.props.date);

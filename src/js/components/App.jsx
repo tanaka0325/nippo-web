@@ -29,7 +29,7 @@ export default class App extends React.Component {
         <div className="section">
           <div className="columns">
             <TasksContainer date={this.state.date} />
-            <TimelineContainer date={this.state.date} />
+            <TimelineContainer />
           </div>
         </div>
       </div>
