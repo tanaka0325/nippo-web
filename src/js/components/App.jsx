@@ -22,9 +22,7 @@ export default class App extends React.Component {
     return (
       <div>
         <Header />
-        <DateHeaderContainer
-          date={this.state.date}
-        />
+        <DateHeaderContainer />
         <TweetContainer />
         <div className="section">
           <div className="columns">
