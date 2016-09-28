@@ -2,6 +2,11 @@ import request from 'superagent';
 import alt from '../alt.js';
 
 class TimelineActions {
+  updateDate(date) {
+    this.updateTimeline(date);
+    return date;
+  }
+
   updateTimeline(date) {
     return (dispatch) => {
       request
