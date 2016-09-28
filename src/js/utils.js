@@ -10,31 +10,26 @@ export default class Utils {
     return `${y}-${m}-${d}`;
   }
 
+  static toDate(formatedDate) {
+    const ary = formatedDate.split('-').map(s => parseInt(s, 10));
+    return new Date(ary[0], ary[1] - 1, ary[2], 0, 0, 0);
+  }
+
   static getToday() {
     return this.toFormatDate(new Date());
   }
 
-  static getYeasterday() {
-    const now = new Date();
-    const yesterday = new Date(now.getFullYear(), now.getMonth() + 1, now.getDate() - 1);
+  static getRelativeDate(formatedBaseDate, diff) {
+    const bd = this.toDate(formatedBaseDate);
+    const rd = new Date(bd.getFullYear(), bd.getMonth(), bd.getDate() + diff);
 
-    return this.toFormatDate(yesterday);
-  }
-
-  static getTomorrow() {
-    const now = new Date();
-    const tomorrow = new Date(now.getFullYear(), now.getMonth() + 1, now.getDate() + 1);
-
-    return this.toFormatDate(tomorrow);
+    return this.toFormatDate(rd);
   }
 
   static isToday(date) {
     const now = new Date();
     const today = new Date(now.getFullYear(), now.getMonth() + 1, now.getDate(), 0, 0, 0);
 
-    const dateAry = date.split('-').map(s => parseInt(s, 10));
-    const dispDate = new Date(dateAry[0], dateAry[1], dateAry[2], 0, 0, 0);
-
-    return today.getTime() === dispDate.getTime();
+    return today.getTime() === this.toDate(date).getTime();
   }
 }
