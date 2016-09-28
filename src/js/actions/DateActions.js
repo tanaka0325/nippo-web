@@ -1,7 +1,7 @@
 import alt from '../alt.js';
 
 class DateActions {
-  changeToDate(date) {
+  changeDate(date) {
     return date;
   }
 }

@@ -5,13 +5,13 @@ import Utils from '../utils';
 class DateStore {
   constructor() {
     this.bindListeners({
-      changeToDate: DateActions.changeToDate,
+      changeDate: DateActions.changeDate,
     });
 
     this.date = Utils.getToday();
   }
 
-  changeToDate(date) {
+  changeDate(date) {
     this.date = date;
   }
 }

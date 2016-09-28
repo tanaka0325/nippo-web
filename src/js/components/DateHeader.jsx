@@ -15,11 +15,11 @@ class DateHeader extends Component {
   }
 
   goPrevDate() {
-    DateActions.changeToDate(Utils.getRelativeDate(this.props.date, -1));
+    DateActions.changeDate(Utils.getRelativeDate(this.props.date, -1));
   }
 
   goNextDate() {
-    DateActions.changeToDate(Utils.getRelativeDate(this.props.date, 1));
+    DateActions.changeDate(Utils.getRelativeDate(this.props.date, 1));
   }
 
   render() {
