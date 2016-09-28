@@ -19,15 +19,13 @@ export default class App extends React.Component {
   }
 
   render() {
-    const tweetForm = Utils.isToday(this.state.date) ? <TweetContainer date={this.state.date} /> : '';
-
     return (
       <div>
         <Header />
         <DateHeaderContainer
           date={this.state.date}
         />
-        {tweetForm}
+        <TweetContainer />
         <div className="section">
           <div className="columns">
             <TasksContainer date={this.state.date} />
