@@ -28,7 +28,7 @@ export default class Utils {
 
   static isToday(date) {
     const now = new Date();
-    const today = new Date(now.getFullYear(), now.getMonth() + 1, now.getDate(), 0, 0, 0);
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0);
 
     return today.getTime() === this.toDate(date).getTime();
   }
