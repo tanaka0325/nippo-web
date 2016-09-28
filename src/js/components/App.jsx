@@ -16,23 +16,6 @@ export default class App extends React.Component {
     this.state = {
       date: today,
     };
-
-    this.prevDate = this.prevDate.bind(this);
-    this.nextDate = this.nextDate.bind(this);
-  }
-
-  prevDate() {
-    const yesterday = Utils.getYeasterday();
-    this.setState({
-      date: yesterday,
-    });
-  }
-
-  nextDate() {
-    const tomorrow = Utils.getTomorrow();
-    this.setState({
-      date: tomorrow,
-    });
   }
 
   render() {
