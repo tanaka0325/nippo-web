@@ -14,14 +14,14 @@ export default class TaskForm extends React.Component {
     };
 
     this._onChange = this._onChange.bind(this);
-    this.AddTask = this.AddTask.bind(this);
+    this.addTask = this.addTask.bind(this);
   }
 
   _onChange(e) {
     this.setState({ text: e.target.value });
   }
 
-  AddTask(e) {
+  addTask(e) {
     e.preventDefault();
     if (this.state.text !== '') {
       this.setState({ text: '' });
@@ -31,7 +31,7 @@ export default class TaskForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.AddTask}>
+      <form onSubmit={this.addTask}>
         <div className="control is-grouped">
           <p className="control is-expanded">
             <input
