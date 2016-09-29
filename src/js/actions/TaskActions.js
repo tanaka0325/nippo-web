@@ -22,8 +22,18 @@ class TaskActions {
       .end((err) => {
         if (err) throw err;
         this.updateTasks(date);
-        TimelineActions.updateTimeline(date);
         return task;
+      });
+  }
+
+  removeTask(id) {
+    const date = Utils.getToday();
+    request
+      .delete(`http://localhost:3000/tasks/${id}`)
+      .set('Accept', 'application/json')
+      .end((err) => {
+        if (err) throw err;
+        this.updateTasks(date);
       });
   }
 
@@ -33,6 +43,7 @@ class TaskActions {
         .get(`http://localhost:3000/tasks/date/${date}`)
         .end((err, res) => {
           dispatch(res.body);
+          TimelineActions.updateTimeline(date);
         });
     };
   }
