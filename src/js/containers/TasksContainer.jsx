@@ -1,55 +1,38 @@
-import React, { PropTypes } from 'react';
-import request from 'superagent';
+import connectToStores from 'alt-utils/lib/connectToStores';
+import React, { PropTypes, Component } from 'react';
 
+import DateStore from '../stores/DateStore';
+import TaskStore from '../stores/TaskStore';
+import TaskActions from '../actions/TaskActions';
 import Tasks from '../components/Tasks.jsx';
 import TaskForm from '../components/TaskForm.jsx';
-
 import Utils from '../utils';
 
 const propTypes = {
   date: PropTypes.string.isRequired,
+  tasks: PropTypes.array.isRequired,
 };
 
-export default class TasksContainer extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      tasks: [],
+class TaskContainer extends Component {
+  static getStores() {
+    return [DateStore, TaskStore];
+  }
+  static getPropsFromStores() {
+    return {
+      ...DateStore.getState(),
+      ...TaskStore.getState(),
     };
-
-    this.getTasksFromServer = this.getTasksFromServer.bind(this);
   }
 
   componentDidMount() {
-    this.getTasksFromServer(this.props.date);
-    // this.interval = setInterval(() => this.getTasksFromServer(this.props.date), 2000);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.getTasksFromServer(nextProps.date);
-  }
-
-  // componentWillUnmount() {
-  //   clearInterval(this.interval);
-  // }
-
-  getTasksFromServer(date) {
-    request
-      .get(`http://localhost:3000/tasks/date/${date}`)
-      .end((err, res) => {
-        if (err) {
-          throw err;
-        }
-        this.setState({ tasks: res.body });
-      });
+    TaskActions.updateTasks(this.props.date);
   }
 
   render() {
     const tasksTodo = [];
     const tasksDoing = [];
     const tasksDone = [];
-    this.state.tasks.forEach((task) => {
+    this.props.tasks.forEach((task) => {
       switch (task.status) {
         case 1:
           tasksTodo.push(task);
@@ -61,7 +44,7 @@ export default class TasksContainer extends React.Component {
           tasksDone.push(task);
           break;
         default:
-          console.log('needs error handling.');
+          break;
       }
     });
 
@@ -70,13 +53,13 @@ export default class TasksContainer extends React.Component {
     return (
       <div className="column">
         {taskForm}
-        <Tasks tasks={tasksTodo} label="TODO" />
+        <Tasks tasks={this.props.tasks} label="TODO" />
         <Tasks tasks={tasksDoing} label="DOING" />
         <Tasks tasks={tasksDone} label="DONE" />
-        <br />
       </div>
     );
   }
 }
 
-TasksContainer.propTypes = propTypes;
+TaskContainer.propTypes = propTypes;
+export default connectToStores(TaskContainer);

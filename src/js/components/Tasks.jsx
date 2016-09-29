@@ -1,13 +1,13 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import Task from './Task.jsx';
 
 const propTypes = {
   label: PropTypes.string.isRequired,
-  tasks: PropTypes.array,
+  tasks: PropTypes.array.isRequired,
 };
 
-export default class Tasks extends React.Component {
+class Tasks extends Component {
   render() {
     const tasks = this.props.tasks.map(task => <Task key={task.id} task={task} />);
 
@@ -40,3 +40,4 @@ export default class Tasks extends React.Component {
 }
 
 Tasks.propTypes = propTypes;
+export default Tasks;

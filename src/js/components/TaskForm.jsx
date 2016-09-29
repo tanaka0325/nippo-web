@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import request from 'superagent';
+import TaskActions from '../actions/TaskActions';
 
 const propTypes = {
   date: PropTypes.string.isRequired,
@@ -10,7 +10,7 @@ export default class TaskForm extends React.Component {
     super(props);
 
     this.state = {
-      task: '',
+      text: '',
     };
 
     this._onChange = this._onChange.bind(this);
@@ -18,28 +18,14 @@ export default class TaskForm extends React.Component {
   }
 
   _onChange(e) {
-    this.setState({ task: e.target.value });
+    this.setState({ text: e.target.value });
   }
 
   AddTask(e) {
     e.preventDefault();
-    if (this.state.task !== '') {
-      this.setState({ task: '' });
-      request
-        .post('http://localhost:3000/tasks')
-        .set('Accept', 'application/json')
-        .send({
-          user_id: 1,
-          text: this.state.task,
-          date: this.props.date,
-          status: 1,
-          priority: 1,
-        })
-        .end((err) => {
-          if (err) {
-            throw err;
-          }
-        });
+    if (this.state.text !== '') {
+      this.setState({ text: '' });
+      TaskActions.addTask(this.state.text);
     }
   }
 
@@ -50,7 +36,7 @@ export default class TaskForm extends React.Component {
           <p className="control is-expanded">
             <input
               className="input"
-              value={this.state.task}
+              value={this.state.text}
               type="text"
               placeholder="何やるの？"
               onChange={this._onChange}
