@@ -2,8 +2,9 @@
   "name": "my-day-web",
   "version": "1.0.0",
   "scripts": {
-    "pack": "webpack",
-    "watch": "webpack -w -d",
+    "pack": "npm run mv:index && webpack",
+    "mv:index": "cp -f ./src/index.html ./build/",
+    "watch": "npm run mv:index && webpack -w -d",
     "start": "npm run watch & browser-sync start --config bs-config.js",
     "build": "npm run pack && cp -f src/index.html build/"
   },
