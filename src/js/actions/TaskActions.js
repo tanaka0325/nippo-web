@@ -5,6 +5,10 @@ import Utils from '../utils';
 import TimelineActions from './TimelineActions';
 
 class TaskActions {
+  updateDate(date) {
+    this.updateTasks(date);
+    return date;
+  }
 
   addTask(text) {
     const date = Utils.getToday();
