@@ -1,22 +1,14 @@
 import React, { PropTypes } from 'react';
 
-import TimelineTask from './TimelineTask.jsx';
-import TimelineTweet from './TimelineTweet.jsx';
+import TimelineLog from './TimelineLog.jsx';
 
 const propTypes = {
   timeline: PropTypes.array.isRequired,
 };
 
 const Timeline = (props) => {
-  const actions = props.timeline.map((log, i) => {
-    switch (log.type) {
-      case 'tweet':
-        return <TimelineTweet key={i} text={log.target.text} action_name={log.action_name} />;
-      case 'task':
-        return <TimelineTask key={i} text={log.target.text} action_name={log.action_name} />;
-      default:
-        return '';
-    }
+  const logs = props.timeline.map((log, i) => {
+    return <TimelineLog key={i} log={log} />;
   });
 
   const divStyle = {
@@ -26,7 +18,7 @@ const Timeline = (props) => {
 
   return (
     <div className="column" style={divStyle}>
-      {actions}
+      {logs}
     </div>
   );
 };
