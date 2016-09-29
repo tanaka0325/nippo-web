@@ -53,7 +53,7 @@ class TaskContainer extends Component {
     return (
       <div className="column">
         {taskForm}
-        <Tasks tasks={this.props.tasks} label="TODO" />
+        <Tasks tasks={tasksTodo} label="TODO" />
         <Tasks tasks={tasksDoing} label="DOING" />
         <Tasks tasks={tasksDone} label="DONE" />
       </div>

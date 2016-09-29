@@ -11,10 +11,15 @@ export default class Task extends React.Component {
     super(props);
 
     this.removeTask = this.removeTask.bind(this);
+    this.doneTask = this.doneTask.bind(this);
   }
 
   removeTask() {
     TaskActions.removeTask(this.props.task.id);
+  }
+
+  doneTask() {
+    TaskActions.doneTask(this.props.task.id);
   }
 
   render() {
@@ -23,7 +28,7 @@ export default class Task extends React.Component {
         <td>
           {this.props.task.text}
         </td>
-        <td className="is-icon">
+        <td className="is-icon" onClick={this.doneTask}>
           <i className="fa fa-check" />
         </td>
         <td className="is-icon">
