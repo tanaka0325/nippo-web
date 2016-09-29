@@ -11,20 +11,20 @@ class TweetForm extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { message: '' };
+    this.state = { text: '' };
 
     this._onChange = this._onChange.bind(this);
     this._onSubmit = this._onSubmit.bind(this);
   }
 
   _onChange(e) {
-    this.setState({ message: e.target.value });
+    this.setState({ text: e.target.value });
   }
 
   _onSubmit(e) {
     e.preventDefault();
-    this.setState({ message: '' });
-    TweetActions.postTweet(this.state.message);
+    this.setState({ text: '' });
+    TweetActions.postTweet(this.state.text);
   }
 
   render() {
@@ -38,7 +38,7 @@ class TweetForm extends Component {
           <p className="control is-expanded">
             <input
               className="input"
-              value={this.state.message}
+              value={this.state.text}
               type="text"
               placeholder="いま何してる？"
               onChange={this._onChange}

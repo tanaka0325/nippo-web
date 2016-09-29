@@ -11,7 +11,7 @@ const Timeline = (props) => {
   const actions = props.timeline.map((log, i) => {
     switch (log.type) {
       case 'tweet':
-        return <TimelineTweet key={i} message={log.target.message} action_name={log.action_name} />;
+        return <TimelineTweet key={i} text={log.target.text} action_name={log.action_name} />;
       case 'task':
         return <TimelineTask key={i} text={log.target.text} action_name={log.action_name} />;
       default:

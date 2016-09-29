@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 
 const propTypes = {
   action_name: PropTypes.string.isRequired,
-  message: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
 };
 
 const TimelineTweet = (props) => {
@@ -12,7 +12,7 @@ const TimelineTweet = (props) => {
         {props.action_name}: Tweet
       </div>
       <div className="message-body">
-        {props.message}
+        {props.text}
       </div>
     </article>
   );

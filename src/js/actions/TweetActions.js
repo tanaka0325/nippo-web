@@ -5,12 +5,12 @@ import Utils from '../utils';
 import TimelineActions from './TimelineActions';
 
 class TweetActions {
-  postTweet(message) {
+  postTweet(text) {
     const date = Utils.getToday();
     request
       .post('http://localhost:3000/tweets')
       .set('Accept', 'application/json')
-      .send({ user_id: 1, message, date, status: 1 })
+      .send({ user_id: 1, text, date, status: 1 })
       .end((err) => {
         if (err) throw err;
         this.sendTimeline(date);
