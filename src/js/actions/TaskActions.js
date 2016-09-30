@@ -16,8 +16,6 @@ class TaskActions {
       user_id: 1,
       text,
       date,
-      status: 1,
-      priority: 1,
     };
     request
       .post('http://localhost:3000/tasks')

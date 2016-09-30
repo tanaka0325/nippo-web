@@ -10,7 +10,7 @@ class TweetActions {
     request
       .post('http://localhost:3000/tweets')
       .set('Accept', 'application/json')
-      .send({ user_id: 1, text, date, status: 1 })
+      .send({ user_id: 1, text, date })
       .end((err) => {
         if (err) throw err;
         this.sendTimeline(date);
