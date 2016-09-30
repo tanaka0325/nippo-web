@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react';
 
 const propTypes = {
-  log: PropTypes.object.isRequired,
+  action: PropTypes.object.isRequired,
 };
 
-const TimelineLog = (props) => {
+const TimelineAction = (props) => {
   const clx = () => {
-    switch (props.log.type) {
+    switch (props.action.class_name) {
       case 'tweet':
         return 'message is-info';
       default:
@@ -17,14 +17,14 @@ const TimelineLog = (props) => {
   return (
     <article className={clx()}>
       <div className="message-header">
-        {props.log.type} : {props.log.action_name}
+        {props.action.class_name} : {props.action.type}
       </div>
       <div className="message-body">
-        {props.log.target.text}
+        {props.action.target.text}
       </div>
     </article>
   );
 };
 
-TimelineLog.propTypes = propTypes;
-export default TimelineLog;
+TimelineAction.propTypes = propTypes;
+export default TimelineAction;
