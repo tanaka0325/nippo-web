@@ -12,6 +12,7 @@ class DateHeader extends Component {
 
     this.goPrevDate = this.goPrevDate.bind(this);
     this.goNextDate = this.goNextDate.bind(this);
+    this.goToday = this.goToday.bind(this);
   }
 
   goPrevDate() {
@@ -20,6 +21,11 @@ class DateHeader extends Component {
 
   goNextDate() {
     DateActions.changeDate(Utils.getRelativeDate(this.props.date, 1));
+  }
+
+  goToday() {
+    const today = Utils.getToday();
+    DateActions.changeDate(today);
   }
 
   render() {
@@ -32,6 +38,9 @@ class DateHeader extends Component {
             </div>
             <div className="nav-center">
               {this.props.date}
+              <span>
+                <a className="button is-info" onClick={this.goToday}>Today</a>
+              </span>
             </div>
             <div className="nav-right">
               <a onClick={this.goNextDate}>▶</a>
