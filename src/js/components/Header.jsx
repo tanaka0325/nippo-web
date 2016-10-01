@@ -6,7 +6,7 @@ const Header = () =>
       <header className="nav">
         <div className="container">
           <div className="nav-left">
-            <a className="nav-item site-title">
+            <a className="nav-item title">
               nippo
             </a>
           </div>
