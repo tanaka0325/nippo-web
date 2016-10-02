@@ -49,10 +49,10 @@ class TweetForm extends Component {
           </p>
         </div>
       </form>
-    : '';
+    : false;
 
     return (
-      <div className="section">
+      <div className="section tweet-form">
         <div className="container" style={divStyle}>
           { res }
         </div>
