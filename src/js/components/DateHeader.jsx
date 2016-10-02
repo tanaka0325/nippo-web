@@ -30,23 +30,29 @@ class DateHeader extends Component {
 
   render() {
     return (
-      <div className="section">
-        <nav className="nav has-shadow">
-          <div className="container">
-            <div className="nav-left">
+      <div className="section date-header">
+        <div className="container content is-large">
+          <div className="columns">
+            <div className="column is-4 has-text-right">
               <a onClick={this.goPrevDate}>◀</a>
             </div>
-            <div className="nav-center">
-              {this.props.date}
-              <span>
-                <a className="button is-info" onClick={this.goToday}>Today</a>
-              </span>
+            <div className="column is-4 has-text-centered">
+              {/* <a onClick={this.goToday}> */}
+                {this.props.date}
+              {/* </a> */}
             </div>
-            <div className="nav-right">
+            <div className="column is-4 has-text-left">
               <a onClick={this.goNextDate}>▶</a>
             </div>
           </div>
-        </nav>
+          {/* <div className="columns">
+            <div className="column">
+              <div className="column has-text-centered">
+                <a className="button" onClick={this.goToday}>Today</a>
+              </div>
+            </div>
+          </div> */}
+        </div>
       </div>
     );
   }
