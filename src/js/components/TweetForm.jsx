@@ -24,7 +24,7 @@ class TweetForm extends Component {
   _onSubmit(e) {
     e.preventDefault();
     this.setState({ text: '' });
-    TweetActions.postTweet(this.state.text);
+    TweetActions.postTweet(this.state.text, this.props.date);
   }
 
   render() {

@@ -25,7 +25,7 @@ export default class TaskForm extends React.Component {
     e.preventDefault();
     if (this.state.text !== '') {
       this.setState({ text: '' });
-      TaskActions.addTask(this.state.text);
+      TaskActions.addTask(this.state.text, this.props.date);
     }
   }
 

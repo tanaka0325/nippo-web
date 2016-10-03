@@ -1,12 +1,10 @@
 import request from 'superagent';
 
 import alt from '../alt.js';
-import Utils from '../utils';
 import TimelineActions from './TimelineActions';
 
 class TweetActions {
-  postTweet(text) {
-    const date = Utils.getToday();
+  postTweet(text, date) {
     request
       .post('http://localhost:3000/tweets')
       .set('Accept', 'application/json')

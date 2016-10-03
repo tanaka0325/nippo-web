@@ -5,11 +5,12 @@ import Task from './Task.jsx';
 const propTypes = {
   label: PropTypes.string.isRequired,
   tasks: PropTypes.array.isRequired,
+  date: PropTypes.string.isRequired,
 };
 
 class Tasks extends Component {
   render() {
-    const tasks = this.props.tasks.map(task => <Task key={task.id} task={task} />);
+    const tasks = this.props.tasks.map(task => <Task key={task.id} task={task} date={this.props.date} />);
 
     const clx = () => {
       switch (this.props.label) {

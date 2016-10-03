@@ -38,9 +38,9 @@ const TasksWrapper = (props) => {
         </div>
         <div className="message-body">
           {taskForm}
-          <Tasks tasks={tasksTodo} label="TODO" />
-          <Tasks tasks={tasksDoing} label="DOING" />
-          <Tasks tasks={tasksDone} label="DONE" />
+          <Tasks tasks={tasksTodo} date={props.date} label="TODO" />
+          <Tasks tasks={tasksDoing} date={props.date} label="DOING" />
+          <Tasks tasks={tasksDone} date={props.date} label="DONE" />
         </div>
       </article>
     </div>

@@ -16,15 +16,15 @@ export default class Task extends React.Component {
   }
 
   removeTask() {
-    TaskActions.removeTask(this.props.task.id);
+    TaskActions.removeTask(this.props.task.id, this.props.date);
   }
 
   playTask() {
-    TaskActions.playTask(this.props.task.id);
+    TaskActions.playTask(this.props.task.id, this.props.date);
   }
 
   doneTask() {
-    TaskActions.doneTask(this.props.task.id);
+    TaskActions.doneTask(this.props.task.id, this.props.date);
   }
 
   render() {

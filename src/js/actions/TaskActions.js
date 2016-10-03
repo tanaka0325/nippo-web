@@ -1,7 +1,6 @@
 import request from 'superagent';
 
 import alt from '../alt.js';
-import Utils from '../utils';
 import TimelineActions from './TimelineActions';
 
 class TaskActions {
@@ -10,8 +9,7 @@ class TaskActions {
     return date;
   }
 
-  addTask(text) {
-    const date = Utils.getToday();
+  addTask(text, date) {
     const task = {
       user_id: 1,
       text,
@@ -28,8 +26,7 @@ class TaskActions {
       });
   }
 
-  removeTask(id) {
-    const date = Utils.getToday();
+  removeTask(id, date) {
     request
       .delete(`http://localhost:3000/tasks/${id}`)
       .set('Accept', 'application/json')
@@ -39,8 +36,7 @@ class TaskActions {
       });
   }
 
-  doneTask(id) {
-    const date = Utils.getToday();
+  doneTask(id, date) {
     request
       .patch(`http://localhost:3000/tasks/${id}`)
       .set('Accept', 'application/json')
@@ -51,8 +47,7 @@ class TaskActions {
       });
   }
 
-  playTask(id) {
-    const date = Utils.getToday();
+  playTask(id, date) {
     request
       .patch(`http://localhost:3000/tasks/${id}`)
       .set('Accept', 'application/json')
