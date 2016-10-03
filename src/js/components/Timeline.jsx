@@ -18,7 +18,14 @@ const Timeline = (props) => {
 
   return (
     <div className="column" style={divStyle}>
-      {actions}
+      <article className="message">
+        <div className="message-header">
+          Timeline
+        </div>
+        <div className="message-body">
+          {actions}
+        </div>
+      </article>
     </div>
   );
 };
