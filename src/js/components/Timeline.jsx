@@ -11,13 +11,8 @@ const Timeline = (props) => {
     return <TimelineAction key={i} action={action} />;
   });
 
-  const divStyle = {
-    maxHeight: '450px',
-    overflowY: 'scroll',
-  };
-
   return (
-    <div className="column" style={divStyle}>
+    <div className="column">
       <article className="message">
         <div className="message-header">
           Timeline
