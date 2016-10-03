@@ -4,6 +4,7 @@ import TaskActions from '../actions/TaskActions';
 
 const propTypes = {
   task: PropTypes.object.isRequired,
+  date: PropTypes.string.isRequired,
 };
 
 export default class Task extends React.Component {
