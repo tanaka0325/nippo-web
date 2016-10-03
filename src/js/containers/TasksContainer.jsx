@@ -4,9 +4,7 @@ import React, { PropTypes, Component } from 'react';
 import DateStore from '../stores/DateStore';
 import TaskStore from '../stores/TaskStore';
 import TaskActions from '../actions/TaskActions';
-import Tasks from '../components/Tasks.jsx';
-import TaskForm from '../components/TaskForm.jsx';
-import Utils from '../utils';
+import TasksWrapper from '../components/TasksWrapper.jsx';
 
 const propTypes = {
   date: PropTypes.string.isRequired,
@@ -29,34 +27,8 @@ class TaskContainer extends Component {
   }
 
   render() {
-    const tasksTodo = [];
-    const tasksDoing = [];
-    const tasksDone = [];
-    this.props.tasks.forEach((task) => {
-      switch (task.status) {
-        case 1:
-          tasksTodo.push(task);
-          break;
-        case 2:
-          tasksDoing.push(task);
-          break;
-        case 3:
-          tasksDone.push(task);
-          break;
-        default:
-          break;
-      }
-    });
-
-    const taskForm = Utils.isToday(this.props.date) ? <TaskForm date={this.props.date} /> : '';
-
     return (
-      <div className="column">
-        {taskForm}
-        <Tasks tasks={tasksTodo} label="TODO" />
-        <Tasks tasks={tasksDoing} label="DOING" />
-        <Tasks tasks={tasksDone} label="DONE" />
-      </div>
+      <TasksWrapper tasks={this.props.tasks} date={this.props.date} />
     );
   }
 }
