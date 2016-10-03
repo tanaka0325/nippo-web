@@ -31,26 +31,24 @@ export default class TaskForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.addTask}>
-        <div className="control is-grouped">
-          <p className="control is-expanded">
-            <input
-              className="input"
-              value={this.state.text}
-              type="text"
-              placeholder="何やるの？"
-              onChange={this._onChange}
-            />
-          </p>
-          <p className="control">
-            <input
-              className="button is-danger"
-              type="submit"
-              value="Add"
-            />
-          </p>
-        </div>
-      </form>
+      <div className="task-form">
+        <form onSubmit={this.addTask}>
+          <div className="control is-grouped">
+            <p className="control is-expanded">
+              <input
+                className="input"
+                value={this.state.text}
+                type="text"
+                placeholder="何やるの？"
+                onChange={this._onChange}
+              />
+            </p>
+            <p className="control">
+              <input className="button is-dark" type="submit" value="Add" />
+            </p>
+          </div>
+        </form>
+      </div>
     );
   }
 }
