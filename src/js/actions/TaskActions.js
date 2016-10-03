@@ -51,6 +51,18 @@ class TaskActions {
       });
   }
 
+  playTask(id) {
+    const date = Utils.getToday();
+    request
+      .patch(`http://localhost:3000/tasks/${id}`)
+      .set('Accept', 'application/json')
+      .send({ status: 2 })
+      .end((err) => {
+        if (err) throw err;
+        this.updateTasks(date);
+      });
+  }
+
   updateTasks(date) {
     return (dispatch) => {
       request

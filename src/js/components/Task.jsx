@@ -11,6 +11,7 @@ export default class Task extends React.Component {
     super(props);
 
     this.removeTask = this.removeTask.bind(this);
+    this.playTask = this.playTask.bind(this);
     this.doneTask = this.doneTask.bind(this);
   }
 
@@ -18,16 +19,26 @@ export default class Task extends React.Component {
     TaskActions.removeTask(this.props.task.id);
   }
 
+  playTask() {
+    TaskActions.playTask(this.props.task.id);
+  }
+
   doneTask() {
     TaskActions.doneTask(this.props.task.id);
   }
 
   render() {
-    const buttonDone = (this.props.task.status !== 3) ?
+    const buttonPlay = (this.props.task.status === 1) ?
+      <td className="is-icon" onClick={this.playTask}>
+        <i className="fa fa-play" />
+      </td>
+      : false;
+
+    const buttonDone = (this.props.task.status === 2) ?
       <td className="is-icon" onClick={this.doneTask}>
         <i className="fa fa-check" />
       </td>
-      : <td />;
+      : false;
 
     return (
       <tr>
@@ -35,6 +46,7 @@ export default class Task extends React.Component {
           {this.props.task.text}
         </td>
         {buttonDone}
+        {buttonPlay}
         <td className="is-icon">
           <i className="fa fa-pencil" />
         </td>
