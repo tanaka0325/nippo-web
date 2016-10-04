@@ -4,6 +4,7 @@ import React, { PropTypes, Component } from 'react';
 import DateStore from '../stores/DateStore';
 import ReportStore from '../stores/ReportStore';
 import Report from '../components/Report.jsx';
+import ReportForm from '../components/ReportForm.jsx';
 import ReportActions from '../actions/ReportActions';
 
 const propTypes = {
@@ -27,8 +28,16 @@ class ReportContainer extends Component {
   }
 
   render() {
+    const component = (this.props.report) ? (
+      <Report report={this.props.report} />
+    ) : (
+      <ReportForm date={this.props.date} />
+    );
+
     return (
-      <Report report={this.props.report} date={this.props.date} />
+      <div className="column">
+        { component }
+      </div>
     );
   }
 }
