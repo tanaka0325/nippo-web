@@ -5,6 +5,7 @@ import DateHeaderContainer from '../containers/DateHeaderContainer.jsx';
 import TweetContainer from '../containers/TweetContainer.jsx';
 import TasksContainer from '../containers/TasksContainer.jsx';
 import TimelineContainer from '../containers/TimelineContainer.jsx';
+import ReportContainer from '../containers/ReportContainer.jsx';
 
 import Utils from '../utils.js';
 
@@ -28,6 +29,7 @@ export default class App extends React.Component {
           <div className="columns">
             <TasksContainer date={this.state.date} />
             <TimelineContainer />
+            <ReportContainer />
           </div>
         </div>
       </div>
