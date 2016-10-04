@@ -13,7 +13,7 @@ class ReportActions {
     };
   }
 
-  portReport(title, body, date) {
+  postReport(title, body, date) {
     const report = {
       user_id: 1,
       title,
@@ -26,6 +26,7 @@ class ReportActions {
       .send(report)
       .end((err) => {
         if (err) throw err;
+        this.updateReport(date);
         return report;
       });
   }

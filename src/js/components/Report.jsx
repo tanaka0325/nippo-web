@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
 const propTypes = {
-  report: PropTypes.object,
+  report: PropTypes.object.isRequired,
 };
 
 class Report extends Component {
@@ -15,25 +15,14 @@ class Report extends Component {
   }
 
   render() {
-    const title = (this.props.report) ? this.props.report.title : false;
-    const body = (this.props.report) ? this.props.report.body : false;
-
     return (
       <article className="message">
         <div className="message-header">
           Report
         </div>
-        <div className="message-body">
-          <form>
-            <p className="control">
-              {title}
-              {/* <input type="text" value={this.state.title} /> */}
-            </p>
-            <p className="control">
-              {body}
-              {/* <textarea name="body" value={this.state.body} /> */}
-            </p>
-          </form>
+        <div className="message-body content">
+          <h3>{this.props.report.title}</h3>
+          <p>{this.props.report.body}</p>
         </div>
       </article>
     );

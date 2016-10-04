@@ -15,9 +15,9 @@ class ReportStore {
     this.report = report;
   }
 
-  // postReport(report) {
-  //   this.report = report;
-  // }
+  postReport(report) {
+    this.report = report;
+  }
 }
 
 module.exports = alt.createStore(ReportStore);
