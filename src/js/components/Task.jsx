@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 
 import TaskActions from '../actions/TaskActions';
+import Utils from '../utils';
 
 const propTypes = {
   task: PropTypes.object.isRequired,
@@ -14,6 +15,7 @@ export default class Task extends React.Component {
     this.removeTask = this.removeTask.bind(this);
     this.playTask = this.playTask.bind(this);
     this.doneTask = this.doneTask.bind(this);
+    this.moveToday = this.moveToday.bind(this);
   }
 
   removeTask() {
@@ -26,6 +28,10 @@ export default class Task extends React.Component {
 
   doneTask() {
     TaskActions.doneTask(this.props.task.id, this.props.date);
+  }
+
+  moveToday() {
+    TaskActions.moveToday(this.props.task.id, this.props.date);
   }
 
   render() {
@@ -41,11 +47,19 @@ export default class Task extends React.Component {
       </td>
       : false;
 
+    const today = Utils.getToday();
+    const buttonMoveToday = (this.props.date !== today) ?
+      <td className="is-icon" onClick={this.moveToday}>
+        <i className="fa fa-share" />
+      </td>
+      : false;
+
     return (
       <tr>
         <td>
           {this.props.task.text}
         </td>
+        {buttonMoveToday}
         {buttonDone}
         {buttonPlay}
         <td className="is-icon">

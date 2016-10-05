@@ -2,6 +2,7 @@ import request from 'superagent';
 
 import alt from '../alt.js';
 import TimelineActions from './TimelineActions';
+import Utils from '../utils';
 
 class TaskActions {
   updateDate(date) {
@@ -52,6 +53,19 @@ class TaskActions {
       .patch(`http://localhost:3000/tasks/${id}`)
       .set('Accept', 'application/json')
       .send({ status: 2 })
+      .end((err) => {
+        if (err) throw err;
+        this.updateTasks(date);
+      });
+  }
+
+  moveToday(id, date) {
+    const today = Utils.getToday();
+    console.log(today);
+    request
+      .patch(`http://localhost:3000/tasks/${id}`)
+      .set('Accept', 'application/json')
+      .send({ date: today })
       .end((err) => {
         if (err) throw err;
         this.updateTasks(date);
