@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import moment from 'moment';
 
 const propTypes = {
   action: PropTypes.object.isRequired,
@@ -14,10 +15,12 @@ const TimelineAction = (props) => {
     }
   };
 
+  const time = moment(props.action.target.created_at).format('HH:mm');
+
   return (
     <article className={clx()}>
       <div className="message-header">
-        {props.action.class_name} : {props.action.type}
+        {props.action.class_name} : {props.action.type} at {time}
       </div>
       <div className="message-body">
         {props.action.target.text}
