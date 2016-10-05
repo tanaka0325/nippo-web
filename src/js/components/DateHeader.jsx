@@ -23,12 +23,18 @@ class DateHeader extends Component {
     DateActions.changeDate(Utils.getRelativeDate(this.props.date, 1));
   }
 
-  goToday() {
-    const today = Utils.getToday();
-    DateActions.changeDate(today);
+  goToday(e) {
+    DateActions.changeDate(e.target.getAttribute('data-today'));
   }
 
   render() {
+    const today = Utils.getToday();
+    const dispDate = (this.props.date !== today) ?
+      <a onClick={this.goToday} data-today={today}>
+        {this.props.date}
+      </a>
+      : this.props.date;
+
     return (
       <div className="section date-header">
         <div className="container content is-large">
@@ -37,9 +43,7 @@ class DateHeader extends Component {
               <a onClick={this.goPrevDate}>◀</a>
             </div>
             <div className="column is-4 has-text-centered">
-              {/* <a onClick={this.goToday}> */}
-                {this.props.date}
-              {/* </a> */}
+              {dispDate}
             </div>
             <div className="column is-4 has-text-left">
               <a onClick={this.goNextDate}>▶</a>
