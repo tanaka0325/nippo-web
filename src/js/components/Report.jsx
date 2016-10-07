@@ -23,26 +23,30 @@ class Report extends Component {
   }
 
   render() {
-    const md = new MarkdownIt({
-      breaks: true,
-      highlight: (str, lang) => {
-        if (lang && hljs.getLanguage(lang)) {
-          try {
-            return hljs.highlight(lang, str).value;
-          } catch (__) {}
-        }
-        return '';
-      },
-    });
-    const result = md.render(this.props.report.body || '');
-
     const element = (this.props.report && !this.props.editable) ? (
-      <div className="message-body content">
-        {/* <h1>{this.props.report.title}</h1> */}
-        <p dangerouslySetInnerHTML={{ __html: result }} />
-        <a className="button is-dark" onClick={this.editReport}>Button</a>
-      </div>
-    ) : (
+      () => {
+        const md = new MarkdownIt({
+          breaks: true,
+          highlight: (str, lang) => {
+            if (lang && hljs.getLanguage(lang)) {
+              try {
+                return hljs.highlight(lang, str).value;
+              } catch (__) {}
+            }
+            return '';
+          },
+        });
+        const result = md.render(this.props.report.body || '');
+
+        return (
+          <div className="message-body content">
+            {/* <h1>{this.props.report.title}</h1> */}
+            <p dangerouslySetInnerHTML={{ __html: result }} />
+            <a className="button is-dark" onClick={this.editReport}>Button</a>
+          </div>
+        );
+      }
+    )() : (
       <ReportForm date={this.props.date} report={this.props.report} />
     );
 
