@@ -1,29 +1,42 @@
 import React, { Component, PropTypes } from 'react';
 
+import ReportActions from '../actions/ReportActions';
+import ReportForm from './ReportForm.jsx';
+
 const propTypes = {
-  report: PropTypes.object.isRequired,
+  date: PropTypes.string.isRequired,
+  report: PropTypes.object,
+  editable: PropTypes.bool.isRequired,
 };
 
 class Report extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      title: props.report.title,
-      body: props.report.body,
-    };
+    this.editReport = this.editReport.bind(this);
+  }
+
+  editReport() {
+    ReportActions.editReport(true);
   }
 
   render() {
+    const element = (this.props.report && !this.props.editable) ? (
+      <div className="message-body content">
+        <h3>{this.props.report.title}</h3>
+        <p>{this.props.report.body}</p>
+        <a className="button is-dark" onClick={this.editReport}>Button</a>
+      </div>
+    ) : (
+      <ReportForm date={this.props.date} report={this.props.report} />
+    );
+
     return (
       <article className="message">
         <div className="message-header">
           Report
         </div>
-        <div className="message-body content">
-          <h3>{this.props.report.title}</h3>
-          <p>{this.props.report.body}</p>
-        </div>
+        { element }
       </article>
     );
   }

@@ -9,6 +9,25 @@ class ReportActions {
         .get(`http://localhost:3000/reports/date/${date}`)
         .end((err, res) => {
           dispatch(res.body);
+          if (res.body === null) {
+            this.editReport(true);
+          } else {
+            this.editReport(false);
+          }
+        });
+    };
+  }
+
+  _updateReport(id, title, body, date) {
+    return (dispatch) => {
+      request
+        .patch(`http://localhost:3000/reports/${id}`)
+        .set('Accept', 'application/json')
+        .send({ title, body })
+        .end((err, res) => {
+          if (err) throw err;
+          dispatch(res.body);
+          this.updateReport(date);
         });
     };
   }
@@ -29,6 +48,12 @@ class ReportActions {
         this.updateReport(date);
         return report;
       });
+  }
+
+  editReport(bool) {
+    return (dispatch) => {
+      dispatch(bool);
+    };
   }
 }
 

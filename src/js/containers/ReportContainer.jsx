@@ -9,6 +9,7 @@ import ReportActions from '../actions/ReportActions';
 
 const propTypes = {
   date: PropTypes.string.isRequired,
+  editable: PropTypes.bool.isRequired,
   report: PropTypes.object,
 };
 
@@ -23,20 +24,14 @@ class ReportContainer extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     ReportActions.updateReport(this.props.date);
   }
 
   render() {
-    const component = (this.props.report) ? (
-      <Report report={this.props.report} />
-    ) : (
-      <ReportForm date={this.props.date} />
-    );
-
     return (
       <div className="column">
-        { component }
+        <Report date={this.props.date} report={this.props.report} editable={this.props.editable} />
       </div>
     );
   }

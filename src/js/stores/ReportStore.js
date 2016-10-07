@@ -5,10 +5,12 @@ class ReportStore {
   constructor() {
     this.bindListeners({
       updateReport: ReportActions.updateReport,
-      // postReport: ReportActions.postReport,
+      postReport: ReportActions.postReport,
+      editReport: ReportActions.editReport,
     });
 
     this.report = {};
+    this.editable = true;
   }
 
   updateReport(report) {
@@ -17,6 +19,10 @@ class ReportStore {
 
   postReport(report) {
     this.report = report;
+  }
+
+  editReport(bool) {
+    this.editable = bool;
   }
 }
 
