@@ -42,7 +42,9 @@ class Report extends Component {
           <div className="message-body content">
             {/* <h1>{this.props.report.title}</h1> */}
             <p dangerouslySetInnerHTML={{ __html: result }} />
-            <a className="button is-dark" onClick={this.editReport}>Edit</a>
+            <p className="control is-grouped is-grouped-centered">
+              <a className="button is-dark" onClick={this.editReport}>Edit</a>
+            </p>
           </div>
         );
       }
