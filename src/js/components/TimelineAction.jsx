@@ -15,7 +15,7 @@ const TimelineAction = (props) => {
     }
   };
 
-  const time = moment(props.action.target.created_at).format('HH:mm');
+  const time = moment(props.action.created_at).format('HH:mm');
 
   return (
     <article className={clx()}>
