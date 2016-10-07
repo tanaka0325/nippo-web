@@ -23,7 +23,6 @@ export default class App extends React.Component {
   }
 
   _onClick(e) {
-    console.log(e.target.name)
     this.setState({
       leftPane: e.target.name,
     });

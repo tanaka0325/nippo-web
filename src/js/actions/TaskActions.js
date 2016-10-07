@@ -61,7 +61,6 @@ class TaskActions {
 
   moveToday(id, date) {
     const today = Utils.getToday();
-    console.log(today);
     request
       .patch(`http://localhost:3000/tasks/${id}`)
       .set('Accept', 'application/json')
