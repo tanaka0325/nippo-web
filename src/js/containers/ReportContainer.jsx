@@ -30,7 +30,7 @@ class ReportContainer extends Component {
 
   render() {
     return (
-      <div className="column">
+      <div className="column report">
         <Report date={this.props.date} report={this.props.report} editable={this.props.editable} />
       </div>
     );
