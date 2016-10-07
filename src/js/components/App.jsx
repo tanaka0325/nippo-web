@@ -16,20 +16,41 @@ export default class App extends React.Component {
     const today = Utils.getToday();
     this.state = {
       date: today,
+      leftPane: 'tasks',
     };
+
+    this._onClick = this._onClick.bind(this);
+  }
+
+  _onClick(e) {
+    console.log(e.target.name)
+    this.setState({
+      leftPane: e.target.name,
+    });
   }
 
   render() {
+    const leftPane = (this.state.leftPane === 'tasks') ? (
+      <TasksContainer date={this.state.date} />
+    ) : (
+      <ReportContainer />
+    );
+
     return (
       <div>
         <Header />
         <DateHeaderContainer />
         <TweetContainer />
         <div className="section">
+        <div className="tabs">
+          <ul>
+            <li onClick={this._onClick}><a name="tasks">Tasks</a></li>
+            <li onClick={this._onClick}><a name="report">Report</a></li>
+          </ul>
+        </div>
           <div className="columns">
-            <TasksContainer date={this.state.date} />
+            {leftPane}
             <TimelineContainer />
-            <ReportContainer />
           </div>
         </div>
       </div>
