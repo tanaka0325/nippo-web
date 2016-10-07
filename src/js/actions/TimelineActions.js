@@ -17,6 +17,10 @@ class TimelineActions {
     };
   }
 
+  reverseTimeline() {
+    return true;
+  }
+
 }
 
 module.exports = alt.createActions(TimelineActions);

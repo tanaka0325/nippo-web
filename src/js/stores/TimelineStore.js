@@ -5,6 +5,7 @@ class TimelineStore {
   constructor() {
     this.bindListeners({
       updateTimeline: TimelineActions.updateTimeline,
+      reverseTimeline: TimelineActions.reverseTimeline,
     });
 
     this.timeline = [];
@@ -12,6 +13,10 @@ class TimelineStore {
 
   updateTimeline(timeline) {
     this.timeline = timeline;
+  }
+
+  reverseTimeline() {
+    this.timeline = this.timeline.reverse();
   }
 }
 
