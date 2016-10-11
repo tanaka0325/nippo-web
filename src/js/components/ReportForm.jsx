@@ -12,7 +12,7 @@ class ReportForm extends Component {
     super(props);
 
     this.state = {
-      title: (this.props.report) ? this.props.report.title : '',
+      title: (this.props.report) ? this.props.report.title : `${this.props.date}日報`,
       body: (this.props.report) ? this.props.report.body : '',
     };
 
@@ -57,7 +57,7 @@ class ReportForm extends Component {
               name="title"
               type="text"
               className="input"
-              value={this.state.title}
+              defaultValue={this.state.title}
               onChange={this._onChange}
             />
           </p>
@@ -66,7 +66,7 @@ class ReportForm extends Component {
             <textarea
               name="body"
               className="textarea"
-              value={this.state.body}
+              defaultValue={this.state.body}
               onChange={this._onChange}
             />
           </p>
