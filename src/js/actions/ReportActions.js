@@ -18,12 +18,12 @@ class ReportActions {
     };
   }
 
-  _updateReport(id, title, body, date) {
+  _updateReport(id, body, date) {
     return (dispatch) => {
       request
         .patch(`http://localhost:3000/reports/${id}`)
         .set('Accept', 'application/json')
-        .send({ title, body })
+        .send({ body })
         .end((err, res) => {
           if (err) throw err;
           dispatch(res.body);
@@ -32,10 +32,10 @@ class ReportActions {
     };
   }
 
-  postReport(title, body, date) {
+  postReport(body, date) {
     const report = {
       user_id: 1,
-      title,
+      title: `${date}日報`,
       body,
       date,
     };
