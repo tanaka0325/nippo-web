@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-import TimelineAction from './TimelineAction.jsx';
+import TimelineAction from './TimelineAction';
 import TimelineActions from '../actions/TimelineActions';
 
 

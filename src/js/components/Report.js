@@ -3,7 +3,7 @@ import MarkdownIt from 'markdown-it';
 import hljs from 'highlight.js';
 
 import ReportActions from '../actions/ReportActions';
-import ReportForm from './ReportForm.jsx';
+import ReportForm from './ReportForm';
 
 const propTypes = {
   date: PropTypes.string.isRequired,

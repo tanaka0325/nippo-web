@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-import Task from './Task.jsx';
+import Task from './Task';
 
 const propTypes = {
   label: PropTypes.string.isRequired,

@@ -4,7 +4,7 @@ import React, { PropTypes, Component } from 'react';
 import DateStore from '../stores/DateStore';
 import TimelineStore from '../stores/TimelineStore';
 import TimelineActions from '../actions/TimelineActions';
-import Timeline from '../components/Timeline.jsx';
+import Timeline from '../components/Timeline';
 
 const propTypes = {
   date: PropTypes.string.isRequired,

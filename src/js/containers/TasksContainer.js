@@ -4,7 +4,7 @@ import React, { PropTypes, Component } from 'react';
 import DateStore from '../stores/DateStore';
 import TaskStore from '../stores/TaskStore';
 import TaskActions from '../actions/TaskActions';
-import TasksWrapper from '../components/TasksWrapper.jsx';
+import TasksWrapper from '../components/TasksWrapper';
 
 const propTypes = {
   date: PropTypes.string.isRequired,

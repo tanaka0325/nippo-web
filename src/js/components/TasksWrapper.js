@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 
-import Tasks from './Tasks.jsx';
-import TaskForm from '../components/TaskForm.jsx';
+import Tasks from './Tasks';
+import TaskForm from '../components/TaskForm';
 import Utils from '../utils';
 
 const propTypes = {

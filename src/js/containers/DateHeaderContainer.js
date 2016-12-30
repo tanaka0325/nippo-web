@@ -2,7 +2,7 @@ import connectToStores from 'alt-utils/lib/connectToStores';
 import React, { PropTypes, Component } from 'react';
 
 import DateStore from '../stores/DateStore';
-import DateHeader from '../components/DateHeader.jsx';
+import DateHeader from '../components/DateHeader';
 
 const propTypes = {
   date: PropTypes.string.isRequired,

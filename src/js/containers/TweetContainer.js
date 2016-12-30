@@ -2,7 +2,7 @@ import connectToStores from 'alt-utils/lib/connectToStores';
 import React, { Component, PropTypes } from 'react';
 
 import DateStore from '../stores/DateStore';
-import TweetForm from '../components/TweetForm.jsx';
+import TweetForm from '../components/TweetForm';
 
 const propTypes = {
   date: PropTypes.string.isRequired,

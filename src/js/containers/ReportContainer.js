@@ -3,8 +3,8 @@ import React, { PropTypes, Component } from 'react';
 
 import DateStore from '../stores/DateStore';
 import ReportStore from '../stores/ReportStore';
-import Report from '../components/Report.jsx';
-import ReportForm from '../components/ReportForm.jsx';
+import Report from '../components/Report';
+import ReportForm from '../components/ReportForm';
 import ReportActions from '../actions/ReportActions';
 
 const propTypes = {
