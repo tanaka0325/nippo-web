@@ -10,7 +10,7 @@ class TimelineActions {
   updateTimeline(date) {
     return (dispatch) => {
       request
-        .get(`http://localhost:3000/timeline/date/${date}`)
+        .get(`http://localhost:9998/timeline/date/${date}`)
         .end((err, res) => {
           dispatch(res.body);
         });

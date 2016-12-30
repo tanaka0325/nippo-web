@@ -6,7 +6,7 @@ class ReportActions {
   updateReport(date) {
     return (dispatch) => {
       request
-        .get(`http://localhost:3000/reports/date/${date}`)
+        .get(`http://localhost:9998/reports/date/${date}`)
         .end((err, res) => {
           dispatch(res.body);
           if (res.body === null) {
@@ -21,7 +21,7 @@ class ReportActions {
   _updateReport(id, body, date) {
     return (dispatch) => {
       request
-        .patch(`http://localhost:3000/reports/${id}`)
+        .patch(`http://localhost:9998/reports/${id}`)
         .set('Accept', 'application/json')
         .send({ body })
         .end((err, res) => {
@@ -40,7 +40,7 @@ class ReportActions {
       date,
     };
     request
-      .post('http://localhost:3000/reports')
+      .post('http://localhost:9998/reports')
       .set('Accept', 'application/json')
       .send(report)
       .end((err) => {

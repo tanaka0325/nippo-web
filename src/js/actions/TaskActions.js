@@ -17,7 +17,7 @@ class TaskActions {
       date,
     };
     request
-      .post('http://localhost:3000/tasks')
+      .post('http://localhost:9998/tasks')
       .set('Accept', 'application/json')
       .send(task)
       .end((err) => {
@@ -29,7 +29,7 @@ class TaskActions {
 
   removeTask(id, date) {
     request
-      .delete(`http://localhost:3000/tasks/${id}`)
+      .delete(`http://localhost:9998/tasks/${id}`)
       .set('Accept', 'application/json')
       .end((err) => {
         if (err) throw err;
@@ -39,7 +39,7 @@ class TaskActions {
 
   doneTask(id, date) {
     request
-      .patch(`http://localhost:3000/tasks/${id}`)
+      .patch(`http://localhost:9998/tasks/${id}`)
       .set('Accept', 'application/json')
       .send({ status: 3 })
       .end((err) => {
@@ -50,7 +50,7 @@ class TaskActions {
 
   playTask(id, date) {
     request
-      .patch(`http://localhost:3000/tasks/${id}`)
+      .patch(`http://localhost:9998/tasks/${id}`)
       .set('Accept', 'application/json')
       .send({ status: 2 })
       .end((err) => {
@@ -62,7 +62,7 @@ class TaskActions {
   moveToday(id, date) {
     const today = Utils.getToday();
     request
-      .patch(`http://localhost:3000/tasks/${id}`)
+      .patch(`http://localhost:9998/tasks/${id}`)
       .set('Accept', 'application/json')
       .send({ date: today })
       .end((err) => {
@@ -74,7 +74,7 @@ class TaskActions {
   updateTasks(date) {
     return (dispatch) => {
       request
-        .get(`http://localhost:3000/tasks/date/${date}`)
+        .get(`http://localhost:9998/tasks/date/${date}`)
         .end((err, res) => {
           dispatch(res.body);
           TimelineActions.updateTimeline(date);

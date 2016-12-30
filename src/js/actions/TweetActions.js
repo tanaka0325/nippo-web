@@ -6,7 +6,7 @@ import TimelineActions from './TimelineActions';
 class TweetActions {
   postTweet(text, date) {
     request
-      .post('http://localhost:3000/tweets')
+      .post('http://localhost:9998/tweets')
       .set('Accept', 'application/json')
       .send({ user_id: 1, text, date })
       .end((err) => {
