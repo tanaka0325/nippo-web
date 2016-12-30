@@ -4,7 +4,7 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 module.exports = [
   {
     name: 'js',
-    entry: path.join(__dirname, 'src', 'js', 'index.jsx'),
+    entry: path.join(__dirname, 'src', 'js', 'index'),
     output: {
       path: path.join(__dirname, 'build'),
       filename: 'bundle.js',
@@ -13,7 +13,7 @@ module.exports = [
     module: {
       loaders: [
         {
-          test: /\.jsx?$/,
+          test: /\.js?$/,
           exclude: /node_modules/,
           loader: 'babel-loader',
         },
@@ -22,9 +22,6 @@ module.exports = [
           loader: 'json-loader',
         },
       ],
-    },
-    resolve: {
-      extensions: ['.js', '.jsx'],
     },
   },
   {
